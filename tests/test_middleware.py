@@ -5,7 +5,7 @@ from fastapi_armor.middleware import ArmorMiddleware
 
 def create_app():
     app = FastAPI()
-    app.add_middleware(ArmorMiddleware)
+    app.add_middleware(ArmorMiddleware, preset="strict")
 
     @app.get("/")
     def index():
@@ -22,6 +22,16 @@ def test_security_headers_present():
     assert response.status_code == 200
     assert response.headers["X-Frame-Options"] == "DENY"
     assert response.headers["X-Content-Type-Options"] == "nosniff"
-    assert "Strict-Transport-Security" in response.headers
-    assert "Content-Security-Policy" in response.headers
-    assert "Referrer-Policy" in response.headers
+    assert (
+        response.headers["Strict-Transport-Security"]
+        == "max-age=63072000; includeSubDomains; preload"
+    )
+    assert response.headers["Content-Security-Policy"] == "default-src 'self';"
+    assert response.headers["Referrer-Policy"] == "no-referrer"
+    assert response.headers["Permissions-Policy"] == "geolocation=(), microphone=()"
+    assert response.headers["X-DNS-Prefetch-Control"] == "off"
+    assert response.headers["Expect-CT"] == "max-age=86400, enforce"
+    assert response.headers["Origin-Agent-Cluster"] == "?1"
+    assert response.headers["Cross-Origin-Embedder-Policy"] == "require-corp"
+    assert response.headers["Cross-Origin-Opener-Policy"] == "same-origin"
+    assert response.headers["Cross-Origin-Resource-Policy"] == "same-origin"
