@@ -1,6 +1,6 @@
 [project]
 name = "fastapi-armor"
-version = "0.1.5"
+version = "0.1.6"
 description = "HTTP security headers middleware for FastAPI."
 authors = [
   { name = "Inan Delibas", email = "inanndelibas@gmail.com" }
