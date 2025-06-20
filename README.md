@@ -10,7 +10,6 @@
 - 🛡️ Protects your app with modern HTTP security headers
 - ⚙️ Fully customizable settings
 - 🧱 Built on top of Starlette and fully async
-- 🧩 Inspired by Helmet.js (Node.js) and Django SecurityMiddleware
 
 ---
 
@@ -37,6 +36,47 @@ By default or optionally, `ArmorMiddleware` can apply the following headers:
 
 ---
 
+## 🧩 Header Parameter Mapping
+
+| Middleware Parameter | Header Set | Example Value |
+|----------------------|------------|---------------|
+| `content_security_policy` | `Content-Security-Policy` | `"default-src 'self'; img-src *;"` |
+| `frame_options` | `X-Frame-Options` | `"DENY"` or `"SAMEORIGIN"` |
+| `hsts` | `Strict-Transport-Security` | `"max-age=63072000; includeSubDomains; preload"` |
+| `x_content_type_options` | `X-Content-Type-Options` | `"nosniff"` |
+| `referrer_policy` | `Referrer-Policy` | `"no-referrer"` or `"strict-origin"` |
+| `permissions_policy` | `Permissions-Policy` | `"geolocation=(), microphone=()"` |
+| `dns_prefetch_control` | `X-DNS-Prefetch-Control` | `"off"` or `"on"` |
+| `expect_ct` | `Expect-CT` | `"max-age=86400, enforce"` |
+| `origin_agent_cluster` | `Origin-Agent-Cluster` | `"?1"` or `"?0"` |
+| `cross_origin_embedder_policy` | `Cross-Origin-Embedder-Policy` | `"require-corp"` |
+| `cross_origin_opener_policy` | `Cross-Origin-Opener-Policy` | `"same-origin"` or `"unsafe-none"` |
+| `cross_origin_resource_policy` | `Cross-Origin-Resource-Policy` | `"same-origin"`, `"same-site"`, or `"cross-origin"` |
+
+---
+
+## 🎛️ Available Presets
+
+You can use built-in presets to quickly apply a set of secure headers. These presets are designed for different use cases:
+
+| Preset | Description |
+|--------|-------------|
+| `strict` | Applies all recommended security headers with strict values for maximum protection. |
+| `relaxed` | Applies a lighter set of headers suitable for more flexible or development environments. |
+| `none` | Disables all headers. Useful for debugging or local development where security is not a concern. |
+
+You can also override any individual header even when using a preset:
+
+```python
+app.add_middleware(
+    ArmorMiddleware,
+    preset="strict",
+    permissions_policy="geolocation=()"
+)
+```
+
+---
+
 ## 📦 Installation
 
 Install via pip:
@@ -59,18 +99,8 @@ app = FastAPI()
 
 app.add_middleware(
     ArmorMiddleware,
-    content_security_policy="default-src 'self'; img-src *;",
-    frame_options="DENY",
-    hsts="max-age=31536000; includeSubDomains",
-    x_content_type_options="nosniff",
-    referrer_policy="strict-origin-when-cross-origin",
-    permissions_policy="geolocation=(), microphone=()",
-    dns_prefetch_control="off",
-    expect_ct="max-age=86400, enforce",
-    origin_agent_cluster="?1",
-    cross_origin_embedder_policy="require-corp",
-    cross_origin_opener_policy="same-origin",
-    cross_origin_resource_policy="same-origin"
+    preset="strict",  # apply secure default set
+    permissions_policy="geolocation=(), microphone=()"  # optionally override specific header
 )
 
 @app.get("/")
