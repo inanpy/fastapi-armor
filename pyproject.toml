@@ -1,0 +1,28 @@
+[project]
+name = "fastapi-armor"
+version = "0.1.5"
+description = "HTTP security headers middleware for FastAPI."
+authors = [
+  { name = "Inan Delibas", email = "inanndelibas@gmail.com" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "fastapi>=0.115.13",
+  "starlette>=0.40.0,<0.47.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/inanpy/fastapi-armor"
+Repository = "https://github.com/inanpy/fastapi-armor"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "httpx>=0.25"
+]
