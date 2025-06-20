@@ -1,6 +1,12 @@
 # fastapi-armor
 
-`fastapi-armor` is a lightweight, production-ready middleware for FastAPI that automatically adds secure HTTP headers to every response. It helps protect your application from common web vulnerabilities like XSS, clickjacking, insecure content loading, and more, all with a single line of middleware configuration.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/inanpy/fastapi-armor/main/assets/fastapi-armor-banner.png" alt="fastapi-armor logo" width="600"/>
+</p>
+
+Secure your FastAPI apps with a single line of code 🛡️
+
+`fastapi-armor` is a security middleware that sets modern HTTP security headers for every response. It provides presets for common configurations (`strict`, `relaxed`, `none`) and allows overrides for full customization.
 
 ---
 
@@ -132,7 +138,7 @@ app.add_middleware(
 
 ---
 
-## Standards References
+## 📚 Standards References
 
 For more details on these headers and their standard definitions, refer to the following official resources:
 
