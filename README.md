@@ -144,12 +144,27 @@ By default or optionally, `ArmorMiddleware` can apply the following headers:
 
 For more details on these headers and their standard definitions, refer to the following official resources:
 
-- [MDN Web Docs: HTTP Headers Reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
-- [OWASP Secure Headers Project](https://owasp.org/www-project-secure-headers/)
-- [RFC 7231: Hypertext Transfer Protocol (HTTP/1.1)](https://tools.ietf.org/html/rfc7231)
-- [IETF RFC Index](https://www.rfc-editor.org/search/rfc_search_detail.php?title=header&pubstatus%5B%5D=Any&stream_name=Any&sortkey=Number&sortorder=Ascending)
+### Official Standards & Specifications
 
-These are part of widely accepted standards and best practices in modern web application security.
+- [W3C: Content Security Policy Level 3](https://www.w3.org/TR/CSP3/) - The official W3C specification for CSP
+- [RFC 6797: HTTP Strict Transport Security](https://datatracker.ietf.org/doc/html/rfc6797) - IETF standard for HSTS
+- [RFC 7034: HTTP Header Field X-Frame-Options](https://datatracker.ietf.org/doc/html/rfc7034) - Official IETF specification
+- [Permissions Policy Specification](https://w3c.github.io/webappsec-permissions-policy/) - W3C specification
+- [Fetch Metadata Request Headers](https://www.w3.org/TR/fetch-metadata/) - W3C document on Cross-Origin headers
+
+### Security Organizations & Best Practices
+
+- [OWASP Secure Headers Project](https://owasp.org/www-project-secure-headers/) - Comprehensive guide by the Open Web Application Security Project
+- [Mozilla Web Security Guidelines](https://infosec.mozilla.org/guidelines/web_security) - Mozilla's authoritative security recommendations
+- [Google Web Fundamentals: Security](https://developers.google.com/web/fundamentals/security) - Google's security best practices
+
+### Documentation & Practical Implementation
+
+- [MDN Web Docs: HTTP Security Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security) - Detailed documentation on security headers
+- [NCSC: Content Security Policy](https://www.ncsc.gov.uk/collection/web-application-development/implement-content-security-policy) - UK National Cyber Security Centre official guidance
+- [Report URI CSP Guide](https://report-uri.com/home/guides) - Practical implementation guide from a leading security reporting service
+
+These resources represent officially accepted standards, specifications, and industry best practices for implementing security headers in modern web applications.
 
 ---
 
