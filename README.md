@@ -162,7 +162,6 @@ For more details on these headers and their standard definitions, refer to the f
 
 - [MDN Web Docs: HTTP Security Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security) - Detailed documentation on security headers
 - [Content Security Policy Quick Reference Guide](https://content-security-policy.com/) - Comprehensive reference for CSP directives and implementation
-- [Report URI CSP Guide](https://report-uri.com/home/guides) - Practical implementation guide from a leading security reporting service
 
 These resources represent officially accepted standards, specifications, and industry best practices for implementing security headers in modern web applications.
 
