@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/inanpy/fastapi-armor/blob/main/assets/fastapi-armor.png" alt="fastapi-armor logo" width="600"/>
+  <img src="https://github.com/inanpy/fastapi-armor/blob/main/assets/fastapi-armor.png" alt="fastapi-armor logo" width="450"/>
 </p>
 
 <p align="center">
