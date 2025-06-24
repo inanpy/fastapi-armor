@@ -98,6 +98,29 @@ app.add_middleware(
 
 ---
 
+## 🦩 Header Parameter Mapping
+
+This table shows how to customize headers in the middleware by mapping FastAPI-Armor's parameter names to actual HTTP header fields:
+
+| Middleware Parameter | Header Set | Example Value |
+|----------------------|------------|--------------|
+| `content_security_policy` | `Content-Security-Policy` | `"default-src 'self'; img-src *;"` |
+| `frame_options` | `X-Frame-Options` | `"DENY"` or `"SAMEORIGIN"` |
+| `hsts` | `Strict-Transport-Security` | `"max-age=63072000; includeSubDomains; preload"` |
+| `x_content_type_options` | `X-Content-Type-Options` | `"nosniff"` |
+| `referrer_policy` | `Referrer-Policy` | `"no-referrer"` or `"strict-origin"` |
+| `permissions_policy` | `Permissions-Policy` | `"geolocation=(), microphone=()"` |
+| `dns_prefetch_control` | `X-DNS-Prefetch-Control` | `"off"` or `"on"` |
+| `expect_ct` | `Expect-CT` | `"max-age=86400, enforce"` |
+| `origin_agent_cluster` | `Origin-Agent-Cluster` | `"?1"` or `"?0"` |
+| `cross_origin_embedder_policy` | `Cross-Origin-Embedder-Policy` | `"require-corp"` |
+| `cross_origin_opener_policy` | `Cross-Origin-Opener-Policy` | `"same-origin"` or `"unsafe-none"` |
+| `cross_origin_resource_policy` | `Cross-Origin-Resource-Policy` | `"same-origin"`, `"same-site"`, or `"cross-origin"` |
+
+Use these parameter names when configuring the middleware. For example, `permissions_policy="geolocation=()"` will set the `Permissions-Policy` HTTP header.
+
+---
+
 ## 🛡️ Included Headers & Their Purpose
 
 By default or optionally, `ArmorMiddleware` can apply the following headers:
@@ -116,25 +139,6 @@ By default or optionally, `ArmorMiddleware` can apply the following headers:
 | `Cross-Origin-Embedder-Policy (COEP)` | Blocks loading resources unless they explicitly allow being embedded. |
 | `Cross-Origin-Opener-Policy (COOP)` | Helps isolate browsing contexts to prevent cross-window attacks. |
 | `Cross-Origin-Resource-Policy (CORP)` | Restricts which origins can load resources from your site. |
-
----
-
-## 🧩 Header Parameter Mapping
-
-| Middleware Parameter | Header Set | Example Value |
-|----------------------|------------|---------------|
-| `content_security_policy` | `Content-Security-Policy` | `"default-src 'self'; img-src *;"` |
-| `frame_options` | `X-Frame-Options` | `"DENY"` or `"SAMEORIGIN"` |
-| `hsts` | `Strict-Transport-Security` | `"max-age=63072000; includeSubDomains; preload"` |
-| `x_content_type_options` | `X-Content-Type-Options` | `"nosniff"` |
-| `referrer_policy` | `Referrer-Policy` | `"no-referrer"` or `"strict-origin"` |
-| `permissions_policy` | `Permissions-Policy` | `"geolocation=(), microphone=()"` |
-| `dns_prefetch_control` | `X-DNS-Prefetch-Control` | `"off"` or `"on"` |
-| `expect_ct` | `Expect-CT` | `"max-age=86400, enforce"` |
-| `origin_agent_cluster` | `Origin-Agent-Cluster` | `"?1"` or `"?0"` |
-| `cross_origin_embedder_policy` | `Cross-Origin-Embedder-Policy` | `"require-corp"` |
-| `cross_origin_opener_policy` | `Cross-Origin-Opener-Policy` | `"same-origin"` or `"unsafe-none"` |
-| `cross_origin_resource_policy` | `Cross-Origin-Resource-Policy` | `"same-origin"`, `"same-site"`, or `"cross-origin"` |
 
 ---
 
