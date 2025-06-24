@@ -52,28 +52,6 @@ async def read_root():
 
 ---
 
-## 🎛️ Available Presets
-
-You can use built-in presets to quickly apply a set of secure headers. These presets are designed for different use cases:
-
-| Preset | Description |
-|--------|-------------|
-| `strict` | Applies all recommended security headers with strict values for maximum protection. |
-| `relaxed` | Applies a lighter set of headers suitable for more flexible or development environments. |
-| `none` | Disables all headers. Useful for debugging or local development where security is not a concern. |
-
-You can also override any individual header even when using a preset:
-
-```python
-app.add_middleware(
-    ArmorMiddleware,
-    preset="strict",
-    permissions_policy="geolocation=(), microphone=()"
-)
-```
-
----
-
 ## ▶️ Running the App
 
 To run this FastAPI app locally using `uvicorn`, first install the required packages:
@@ -94,6 +72,28 @@ You can inspect the HTTP headers in the browser or via curl:
 
 ```bash
 curl -I http://127.0.0.1:8000
+```
+
+---
+
+## 🎛️ Available Presets
+
+You can use built-in presets to quickly apply a set of secure headers. These presets are designed for different use cases:
+
+| Preset | Description |
+|--------|-------------|
+| `strict` | Applies all recommended security headers with strict values for maximum protection. |
+| `relaxed` | Applies a lighter set of headers suitable for more flexible or development environments. |
+| `none` | Disables all headers. Useful for debugging or local development where security is not a concern. |
+
+You can also override any individual header even when using a preset:
+
+```python
+app.add_middleware(
+    ArmorMiddleware,
+    preset="strict",
+    permissions_policy="geolocation=(), microphone=()"
+)
 ```
 
 ---
