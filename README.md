@@ -156,12 +156,12 @@ For more details on these headers and their standard definitions, refer to the f
 
 - [OWASP Secure Headers Project](https://owasp.org/www-project-secure-headers/) - Comprehensive guide by the Open Web Application Security Project
 - [Mozilla Web Security Guidelines](https://infosec.mozilla.org/guidelines/web_security) - Mozilla's authoritative security recommendations
-- [Google Web Fundamentals: Security](https://developers.google.com/web/fundamentals/security) - Google's security best practices
+- [NIST SP 800-95: Guide to Secure Web Services](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-95.pdf) - National Institute of Standards and Technology official guidance
 
 ### Documentation & Practical Implementation
 
 - [MDN Web Docs: HTTP Security Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security) - Detailed documentation on security headers
-- [NCSC: Content Security Policy](https://www.ncsc.gov.uk/collection/web-application-development/implement-content-security-policy) - UK National Cyber Security Centre official guidance
+- [Content Security Policy Quick Reference Guide](https://content-security-policy.com/) - Comprehensive reference for CSP directives and implementation
 - [Report URI CSP Guide](https://report-uri.com/home/guides) - Practical implementation guide from a leading security reporting service
 
 These resources represent officially accepted standards, specifications, and industry best practices for implementing security headers in modern web applications.
