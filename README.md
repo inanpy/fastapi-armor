@@ -9,6 +9,13 @@ Secure your FastAPI apps with a single line of code 🛡️
 `fastapi-armor` is a security middleware that sets modern HTTP security headers for every response. It provides presets for common configurations (`strict`, `relaxed`, `none`) and allows overrides for full customization.
 
 ---
+<p align="center">
+<a href="https://pypi.org/project/fastapi-armor/"><img src="https://img.shields.io/pypi/v/fastapi-armor?color=blue" alt="PyPI version"></a>
+<a href="https://pepy.tech/project/fastapi-armor">
+  <img src="https://static.pepy.tech/badge/fastapi-armor" alt="Total downloads">
+</a>
+
+</p>
 
 ## 🚀 Features
 
