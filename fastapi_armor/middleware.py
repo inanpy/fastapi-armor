@@ -10,8 +10,12 @@ class ArmorMiddleware(BaseHTTPMiddleware):
         headers = PRESETS.get(preset, {}).copy() if preset else {}
 
         for param_name, value in custom_headers.items():
-            if value is not None and param_name in PARAM_TO_HEADER:
-                header_name = PARAM_TO_HEADER[param_name]
+            if param_name not in PARAM_TO_HEADER:
+                continue
+            header_name = PARAM_TO_HEADER[param_name]
+            if value is None:
+                headers.pop(header_name, None)
+            else:
                 headers[header_name] = value
 
         self.headers = headers
