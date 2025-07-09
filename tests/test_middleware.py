@@ -172,7 +172,7 @@ class TestArmorMiddlewareCustomization:
         """Test how None values are handled in custom headers"""
         app = create_app(
             preset="strict",
-            # These None values will be ignored, preset headers remain
+            # These None values remove headers that would otherwise come from the preset
             content_security_policy=None,
             frame_options=None,
         )
@@ -180,14 +180,38 @@ class TestArmorMiddlewareCustomization:
         response = client.get("/")
 
         assert response.status_code == 200
-        # The headers should still be present from the preset
-        assert "Content-Security-Policy" in response.headers
-        assert "X-Frame-Options" in response.headers
-        # And should have their preset values
-        assert response.headers["Content-Security-Policy"] == "default-src 'self';"
-        assert response.headers["X-Frame-Options"] == "DENY"
-        # Other preset headers should also be present
+        # Headers set to None should be removed, even from presets
+        assert "Content-Security-Policy" not in response.headers
+        assert "X-Frame-Options" not in response.headers
+
+        # Other preset headers should still be present
         assert "X-Content-Type-Options" in response.headers
+        assert "Strict-Transport-Security" in response.headers
+
+    def test_custom_param_none_not_sent(self):
+        """Test that custom parameters with None values are not sent in the response"""
+        # Create app with headers both set and explicitly set to None
+        app = create_app(
+            # Set headers that should be present
+            frame_options="DENY",
+            content_security_policy="default-src 'self';",
+            # Set headers that should not be present
+            referrer_policy=None,
+            content_type_options=None,
+            strict_transport_security=None,
+        )
+        client = TestClient(app)
+        response = client.get("/")
+
+        assert response.status_code == 200
+        # Check that the explicitly set headers are present
+        assert response.headers["X-Frame-Options"] == "DENY"
+        assert response.headers["Content-Security-Policy"] == "default-src 'self';"
+        
+        # Check that headers with None values are not present
+        assert "Referrer-Policy" not in response.headers.keys()
+        assert "X-Content-Type-Options" not in response.headers.keys()
+        assert "Strict-Transport-Security" not in response.headers.keys()
 
     def test_fully_custom_configuration(self):
         """Test a fully custom configuration without using presets"""
