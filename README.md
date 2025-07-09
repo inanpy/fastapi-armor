@@ -178,6 +178,16 @@ These resources represent officially accepted standards, specifications, and ind
 
 ---
 
+## 👥 Contributors
+
+Special thanks to the following contributors who have helped improve this project:
+
+- [Stéphane Brunner](https://github.com/sbrunner) - Enhanced middleware to skip headers when parameter is None
+
+If you'd like to contribute, please feel free to submit a pull request!
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License.
